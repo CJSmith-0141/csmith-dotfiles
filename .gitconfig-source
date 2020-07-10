@@ -1,0 +1,6 @@
+[user]
+	name = Connor James Smith
+	email = connor.j.smith6.ctr@mail.mil
+	signingkey = 0x175751A488C14868
+[commit]
+	gpgSign = true
