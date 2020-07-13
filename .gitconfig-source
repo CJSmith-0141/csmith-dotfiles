@@ -1,3 +1,5 @@
+[core]
+    editor = nvim
 [user]
 	name = Connor James Smith
 	email = cjs.connor.smith@gmail.com 
