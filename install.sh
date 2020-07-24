@@ -1,6 +1,9 @@
 #! /usr/bin/bash
-#this script is a work in progress, do not use
+# this script is a work in progress, do not use
 # the following lines require internet
+# TODO: add a version of this script that builds a bare version 
+# of thsi scipt so that I can setup a disconnected server with 
+# a laptop that has already been configured 
 
 #powerline
 pip3 install --user powerline-status
@@ -8,7 +11,12 @@ pip3 install --user powerline-status
 #base16shell
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 
-#nvim
+#nvim and development tools
+sudo dnf install "Development Tools"
+sudo dnf install cmake
+sudo dnf install node npm
+sudo dnf install go
+sudo dnf install python-devel
 sudo dnf install neovim
 pip3 install --user pynvim
 
@@ -22,11 +30,15 @@ sudo dnf install -y alacritty
 
 #copies all the new dotfiles over, stomps on local stuff BEWARE
 cp ./.bashrc ~
-cp -r ./.config ~
+cp -r ./.config/* ~/.config
 cp -r ./.ssh ~
 cp -r ./.gnupg ~
 cp ./.tmux.conf ~
 cp ./.gitconfig-source ~/.gitconfig
+
+restorecon -R ~
+
+gpg --import ./csmith.key
 
 #This runs the PlugInstall function and all post install hooks
 nvim --headless +PlugInstall +qall

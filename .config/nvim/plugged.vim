@@ -7,4 +7,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'mbbill/undotree'
+Plug 'cdelledonne/vim-cmake'
 call plug#end()
