@@ -1,5 +1,9 @@
-source ~/.config/nvim/bigmoney.vim
 source ~/.config/nvim/plugged.vim
+source ~/.config/nvim/bigmoney.vim
 source ~/.config/nvim/themes.vim
 source ~/.config/nvim/keybinds.vim
 source ~/.config/nvim/cmake-settings.vim
+source ~/.config/nvim/markdown-preview.vim
+source ~/.config/nvim/rg-fzf-settings.vim
+source ~/.config/nvim/spelunker-settings.vim
+source ~/.config/nvim/ycm-settings.vim

@@ -18,6 +18,7 @@ sudo dnf install node npm
 sudo dnf install go
 sudo dnf install python-devel
 sudo dnf install neovim
+sudo dnf install rsync
 pip3 install --user pynvim
 
 #plugged
@@ -29,12 +30,15 @@ sudo dnf copr enable -y pschyska/alacritty
 sudo dnf install -y alacritty  
 
 #copies all the new dotfiles over, stomps on local stuff BEWARE
-cp ./.bashrc ~
-cp -r ./.config/* ~/.config
-cp -r ./.ssh ~
-cp -r ./.gnupg ~
-cp ./.tmux.conf ~
-cp ./.gitconfig-source ~/.gitconfig
+rsync -aAXP ./.bashrc ~
+rsync -aAXP ./.config/alacritty ~/.config
+rsync -aAXP ./.config/fontconfig  ~/.config
+rsync -aAXP ./.config/nvim ~/.config
+rsync -aAXP ./.config/powerline ~/.config
+rsync -aAXP ./.ssh ~
+rsync -aAXP ./.gnupg ~
+rsync -aAXP ./.tmux.conf ~
+rsync -aAXP ./.gitconfig-source ~/.gitconfig
 
 restorecon -R ~
 

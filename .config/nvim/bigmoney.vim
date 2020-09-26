@@ -21,3 +21,9 @@ set incsearch
 set termguicolors
 set scrolloff=8
 let g:loaded_python_provider = 0
+
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+augroup END
+
