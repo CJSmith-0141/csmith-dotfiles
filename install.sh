@@ -17,7 +17,7 @@ sudo dnf install -y cmake \
  gnupg2 pinentry-curses pcsc-lite pcsc-lite-libs gnupg2-smime
 
 # neovim python plugin support
-pip3 install --user pynvim \
+pip3 install --user pynvim
 
 #powerline (the cool status line)
 pip3 install --user powerline-status
@@ -27,8 +27,9 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 #alacritty (gpu accelerated terminal)
-sudo dnf copr enable -y pschyska/alacritty
-sudo dnf install -y alacritty  
+#These are commented out because it's nicer to build from source
+#sudo dnf copr enable -y pschyska/alacritty
+#sudo dnf install -y alacritty  
 
 #copies all the new dotfiles over, stomps on local stuff BEWARE
 rsync -aAXP ./.bashrc ~
@@ -53,7 +54,12 @@ chmod 600 ~/.gnupg/sshcontrol
 
 #tmux  
 rsync -aAXP ./.tmux.conf ~
+
+#git
 rsync -aAXP ./.gitconfig-source ~/.gitconfig
+
+#ideavim
+rsync -aAXP ./.ideavimrc ~/.ideavimrc
 
 #restore security context
 restorecon -R ~
@@ -63,3 +69,4 @@ gpg --import ./csmith.key
 
 #This runs the PlugInstall function and all post install hooks
 nvim --headless +PlugInstall +qall
+nvim --headless +PlugUpdate +qall

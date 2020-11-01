@@ -21,4 +21,8 @@ Plug 'kamykn/spelunker.vim'
 Plug 'kamykn/popup-menu.nvim'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'peterhoeg/vim-qml'
+Plug 'rust-lang/rust.vim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+Plug 'tjdevries/lsp_extensions.nvim'
 call plug#end()
