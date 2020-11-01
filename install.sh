@@ -14,6 +14,8 @@ sudo dnf install -y cmake \
  neovim \
  rsync \
  ninja-build \
+ bat \ 
+ ruby gem \ 
  gnupg2 pinentry-curses pcsc-lite pcsc-lite-libs gnupg2-smime
 
 # neovim python plugin support
@@ -66,6 +68,9 @@ restorecon -R ~
 
 #import my public key for gpg 
 gpg --import ./csmith.key
+
+#import old key for posterity
+gpg --keyserver keyserver.ubuntu.com --recv 0x175751A488C14868
 
 #This runs the PlugInstall function and all post install hooks
 nvim --headless +PlugInstall +qall

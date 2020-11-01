@@ -29,7 +29,7 @@ gpgconf --launch gpg-agent
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
-. ~/.local/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh
+. ~/.local/lib/python$(python3 -V | grep -o 3\..)/site-packages/powerline/bindings/bash/powerline.sh
 
 # Base16 Shell support 
 BASE16_SHELL="$HOME/.config/base16-shell/"
