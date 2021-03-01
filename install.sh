@@ -7,19 +7,20 @@ git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shel
 
 #nvim and development tools
 sudo dnf group install -y "Development Tools"
-sudo dnf install -y cmake \
+sudo dnf install -y \
  node npm \
  go \
  python-devel \
  neovim \
  rsync \
  ninja-build \
- bat \ 
- ruby gem \ 
+ bat \
+ ruby gem \
  gnupg2 pinentry-curses pcsc-lite pcsc-lite-libs gnupg2-smime
 
 # neovim python plugin support
 pip3 install --user pynvim
+pip3 install --user neovim
 
 #powerline (the cool status line)
 pip3 install --user powerline-status
@@ -34,40 +35,40 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 #sudo dnf install -y alacritty  
 
 #copies all the new dotfiles over, stomps on local stuff BEWARE
-rsync -aAXP ./.bashrc ~
-rsync -aAXP ./.config/alacritty ~/.config
-rsync -aAXP ./.config/fontconfig  ~/.config
-rsync -aAXP ./.config/nvim ~/.config
-rsync -aAXP ./.config/powerline ~/.config
+rsync -aAXP ./bashrc ~/.bashrc
+rsync -aAXP ./config/alacritty ~/.config
+rsync -aAXP ./config/fontconfig  ~/.config
+rsync -aAXP ./config/nvim ~/.config
+rsync -aAXP ./config/powerline ~/.config
 
 # ssh and folder permissions
-rsync -aAXP ./.ssh ~
-chmod 700 ~/.ssh
-chmod 600 ~/.ssh/config
-chmod 600 ~/.ssh/id_rsa_yubikey.pub
+#rsync -aAXP ./.ssh ~
+#chmod 700 ~/.ssh
+#chmod 600 ~/.ssh/config
+#chmod 600 ~/.ssh/id_rsa_yubikey.pub
 
 #gpg and folder permissions 
-rsync -aAXP ./.gnupg ~
-chmod 700 ~/.gnupg
-chmod 600 ~/.gnupg/gpg-agent.conf
-chmod 600 ~/.gnupg/gpg.conf
-chmod 600 ~/.gnupg/scdaemon.conf
-chmod 600 ~/.gnupg/sshcontrol
+#rsync -aAXP ./.gnupg ~
+#chmod 700 ~/.gnupg
+#chmod 600 ~/.gnupg/gpg-agent.conf
+#chmod 600 ~/.gnupg/gpg.conf
+#chmod 600 ~/.gnupg/scdaemon.conf
+#chmod 600 ~/.gnupg/sshcontrol
 
 #tmux  
-rsync -aAXP ./.tmux.conf ~
+rsync -aAXP ./tmux.conf ~/.tmux.conf
 
 #git
-rsync -aAXP ./.gitconfig-source ~/.gitconfig
+#rsync -aAXP ./.gitconfig-source ~/.gitconfig
 
 #ideavim
-rsync -aAXP ./.ideavimrc ~/.ideavimrc
+rsync -aAXP ./ideavimrc ~/.ideavimrc
 
 #restore security context
 restorecon -R ~
 
 #import my public key for gpg 
-gpg --import ./csmith.key
+#gpg --import ./csmith.key
 
 #import old key for posterity
 gpg --keyserver keyserver.ubuntu.com --recv 0x175751A488C14868

@@ -18,9 +18,6 @@ export PATH
 # User specific aliases and functions
 
 # this is for using Yubikey for ssh and git signing
-export GPG_TTY="$(tty)"
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-gpgconf --launch gpg-agent
 
 # this is for fzf, a fuzzy finder
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
